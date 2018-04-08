@@ -9,8 +9,8 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 120px;
+  padding: 10px;
   color: white;
 }
 
@@ -26,3 +26,81 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.table-container {
+  width: 1000px;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: auto;
+}
+
+.issue-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.issue-list-item {
+  display: flex;
+  border-bottom: 1px solid black; 
+}
+
+.list-item-icon {
+  width: 50px;
+  align-self: center;
+  float: left;
+  margin: 10px;
+}
+
+.list-item-right-side {
+  margin-left: auto;
+}
+
+.list-item-left-side {
+  width: 80%;
+  text-align: left;
+}
+
+.list-item-name {
+  display: inline-flex;
+  margin-top: 10px;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.list-item-number {
+  text-align: left;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  float: right;
+}
+
+.list-item-label {
+  display: inline-flex;
+  height: 15px;
+  margin-right: 5px;
+  padding: 2px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.list-item-comments {
+  display: inline-flex;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+
