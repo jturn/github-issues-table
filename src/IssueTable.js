@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import IssueListItem from './IssueListItem';
+import IssueListHeader from './IssueListHeader';
 import humanizeDate from './utils';
 
-class IssueList extends Component {
+class IssueTable extends Component {
   render() {
     return (
       <div>
         <ul className="issue-list">
+        <IssueListHeader 
+          authors={this.props.authors} 
+          labels={this.props.labels} 
+          openIssues={this.props.issues.length}
+          handleClick={this.props.handleFilterClick}
+        />
           {this.props.issues.map((issue) => {
             return <IssueListItem
                       number={issue.number}
@@ -26,4 +33,4 @@ class IssueList extends Component {
   }
 }
 
-export default IssueList;
+export default IssueTable;
