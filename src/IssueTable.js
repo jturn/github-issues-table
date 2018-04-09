@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import IssueListItem from './IssueListItem';
 import IssueListHeader from './IssueListHeader';
 import humanizeDate from './utils';
+import FilterDropdown from './FilterDropdown';
 
 class IssueTable extends Component {
   render() {
@@ -14,6 +15,13 @@ class IssueTable extends Component {
           openIssues={this.props.issues.length}
           handleClick={this.props.handleFilterClick}
         />
+        {this.props.showAuthorDropdown && 
+          <FilterDropdown 
+            names={this.props.authors} 
+            type="author" 
+            handleFilterInput={this.props.handleFilterInput}
+            filterIssues={this.props.filterIssues}
+          />}
           {this.props.issues.map((issue) => {
             return <IssueListItem
                       number={issue.number}

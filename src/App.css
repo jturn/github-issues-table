@@ -80,9 +80,41 @@ a:hover {
   margin-right: 10px;
 }
 
+.filter-dropdown {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  border: 1px solid black;
+  background: white;
+  border-radius: 3px;
+  z-index: 10;
+  position: absolute;
+  left: 500px;
+  top: 220px;
+}
+
+.filter-list-item {
+  padding-left: 20px;
+  display: flex;
+  align-self: left;
+  border-bottom: 1px solid black;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.filter-list-item:hover {
+  background: #0366d6;
+  color: white;
+}
+
 .issue-list-item {
   display: flex;
   border-bottom: 1px solid #e1e4e8; 
+}
+
+.filter-avatar {
+  height: 30px;
+  width: 30px;
 }
 
 .issue-list-item:hover {
