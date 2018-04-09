@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import IssueList from './IssueList';
-const REACT_ISSUES_ENDPOINT = 'https://api.github.com/repos/facebook/react/issues';
+const REACT_ISSUES_ENDPOINT = 'https://api.github.com/repos/reactjs/redux/issues';
 
 class TableContainer extends Component {
   constructor(){
