@@ -8,21 +8,26 @@ class TableContainer extends Component {
     super()
 
     this.state = {
+      //Initial data
       issueData: [],
       authors: [],
       labels: [],
+      //Filtered display data
       filteredIssues: [],
       filteredAuthors: [],
       filteredLabels: [],
+      //Dropdown filter flags
       showAuthorDropdown: false,
       showLabelDropdown: false,
       filterInputValue: ''
     }
+
     this.handleFilterClick = this.handleFilterClick.bind(this);
     this.handleFilterInput = this.handleFilterInput.bind(this);
     this.filterIssues = this.filterIssues.bind(this);
   }
 
+  //Filter dropdowns on field input
   handleFilterInput(input) {
     let query = input.target.value;
     console.log(query);
@@ -40,6 +45,7 @@ class TableContainer extends Component {
     this.setState({ filterInputValue: query })
   }
 
+  //Open and close filter dropdowns
   handleFilterClick(filter) {
     console.log('filter click clicked', filter);
     if (filter === 'author') {
@@ -56,6 +62,7 @@ class TableContainer extends Component {
     }
   }
 
+  //Filter issues list by selected attribute (author or label)
   filterIssues(type, filterBy) {
     let newList;
 
@@ -103,7 +110,8 @@ class TableContainer extends Component {
             })
         })
   
-        this.setState({ 
+        this.setState({
+          //Initial data is kept unaltered in issueData, filteredIssues is used to render UI 
           issueData: res.data,
           authors: [...authorList],
           labels: [...labelList],
