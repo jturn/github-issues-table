@@ -7,7 +7,7 @@ class FilterDropdown extends Component {
     return (
       <div className="filter-dropdown">
         <span> Filter by {type} </span>
-        <input className="filter-input" onChange={(e) => {this.props.handleFilterInput(e)}}></input>
+        <input className="filter-input" onChange={(e) => {this.props.handleFilterInput(e)}} placeholder="Filter users"></input>
         <ul>
           {this.props.items.map((name) => {
             return <li>

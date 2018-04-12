@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FilterDropdown from './FilterDropdown';
-import { FaExclamationCircle } from 'react-icons/lib/fa';
+import { FaExclamationCircle, FaAngleDown } from 'react-icons/lib/fa';
 
 class IssueListHeader extends Component {
   render() {
@@ -12,7 +12,7 @@ class IssueListHeader extends Component {
         </div>
         <div className="issue-header-filters">
           <div className="authors">
-            <div className="issue-list-authors-filter-link" onClick={(e) => {this.props.handleClick('author')}}>Author</div>
+            <div className="issue-list-authors-filter-link" onClick={(e) => {this.props.handleClick('author')}}>Author <FaAngleDown/></div>
             {this.props.showAuthorDropdown && 
               <FilterDropdown 
                 items={this.props.authors} 
@@ -22,7 +22,7 @@ class IssueListHeader extends Component {
               />}
           </div>
           <div className="labels">
-            <div className="issue-list-labels-filter-link" onClick={(e) => {this.props.handleClick('label')}}>Label</div>
+            <div className="issue-list-labels-filter-link" onClick={(e) => {this.props.handleClick('label')}}>Label<FaAngleDown/></div>
             {this.props.showLabelDropdown &&
               <FilterDropdown 
                 items={this.props.labels} 
