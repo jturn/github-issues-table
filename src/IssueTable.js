@@ -6,6 +6,8 @@ import FilterDropdown from './FilterDropdown';
 
 class IssueTable extends Component {
   render() {
+    console.log('props.authors', this.props.authors);
+  console.log('props.labels', this.props.labels);
     return (
       <div>
         <ul className="issue-list">
@@ -18,6 +20,13 @@ class IssueTable extends Component {
         {this.props.showAuthorDropdown && 
           <FilterDropdown 
             names={this.props.authors} 
+            type="author" 
+            handleFilterInput={this.props.handleFilterInput}
+            filterIssues={this.props.filterIssues}
+          />}
+        {this.props.showLabelDropdown && 
+          <FilterDropdown 
+            names={this.props.labels} 
             type="author" 
             handleFilterInput={this.props.handleFilterInput}
             filterIssues={this.props.filterIssues}

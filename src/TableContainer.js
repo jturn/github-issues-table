@@ -63,6 +63,7 @@ class TableContainer extends Component {
     axios.get(REDUX_ISSUES_ENDPOINT)
       .then(res => {
         let authors = new Set();
+        let labels = new Set();
         let authorList = new Set();
         let labelList = new Set();
 
@@ -72,15 +73,20 @@ class TableContainer extends Component {
             authorList.add({
                 author: issue.user.login,
                 avatar: issue.user.avatar_url
-              });
+              })
           }
           authors.add(issue.user.login);
 
-          issue.labels.forEach((label) => {
-            labelList.add(label.name);
-          })
+            issue.labels.forEach((label) => {
+              if (!labels.has(label.name)) {
+                labelList.add({
+                  label: label.name,
+                  color: label.color
+                })
+              }
+            labels.add(label.name)
+            })
         })
-        console.log([...authorList]);
   
         this.setState({ 
           issueData: res.data,
@@ -105,7 +111,7 @@ class TableContainer extends Component {
           handleFilterClick={this.handleFilterClick}
           handleFilterInput={this.handleFilterInput}
           showAuthorDropdown={this.state.showAuthorDropdown}
-          filterIssues={this.props.filterIssues}
+          filterIssues={this.filterIssues}
         />
       </div>
     );
