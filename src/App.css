@@ -57,6 +57,7 @@ a:hover {
 
 .issue-list-header {
   background: #f6f8fa;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .issue-header-info {
@@ -75,6 +76,9 @@ a:hover {
   margin-right: 80px;
 }
 
+.issue-list-authors-filter-link:hover, .issue-list-labels-filter-link:hover {
+  cursor: pointer;
+}
 
 .issue-header-icon {
   margin-right: 10px;
@@ -89,8 +93,6 @@ a:hover {
   border-radius: 3px;
   z-index: 10;
   position: absolute;
-  left: 500px;
-  top: 220px;
 }
 
 .filter-list-item {
@@ -113,6 +115,11 @@ a:hover {
 }
 
 .filter-avatar {
+  height: 30px;
+  width: 30px;
+}
+
+.filter-color {
   height: 30px;
   width: 30px;
 }
@@ -143,6 +150,8 @@ a:hover {
   margin-right: 5px;
   margin-bottom: 3px;
   font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
   word-wrap: break-word;
   color: #24292e;
 }
@@ -174,6 +183,7 @@ a:hover {
   margin-right: 10px;
   margin-left: 20px;
   font-size: 14px;
+  width: 20px;
 }
 
 

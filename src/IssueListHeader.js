@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FilterDropdown from './FilterDropdown';
 import { FaExclamationCircle } from 'react-icons/lib/fa';
 
 class IssueListHeader extends Component {
@@ -10,8 +11,26 @@ class IssueListHeader extends Component {
           {this.props.openIssues} Open Issues
         </div>
         <div className="issue-header-filters">
-          <div className="issue-list-authors-filter-link" onClick={(e) => {this.props.handleClick('author')}}>Author</div>
-          <div className="issue-list-labels-filter-link" onClick={(e) => {this.props.handleClick('label')}}>Label</div>
+          <div className="authors">
+            <div className="issue-list-authors-filter-link" onClick={(e) => {this.props.handleClick('author')}}>Author</div>
+            {this.props.showAuthorDropdown && 
+              <FilterDropdown 
+                items={this.props.authors} 
+                type="author" 
+                handleFilterInput={this.props.handleFilterInput}
+                filterIssues={this.props.filterIssues}
+              />}
+          </div>
+          <div className="labels">
+            <div className="issue-list-labels-filter-link" onClick={(e) => {this.props.handleClick('label')}}>Label</div>
+            {this.props.showLabelDropdown &&
+              <FilterDropdown 
+                items={this.props.labels} 
+                type="label" 
+                handleFilterInput={this.props.handleFilterInput}
+                filterIssues={this.props.filterIssues}
+              />}
+          </div>
           <div className="issue-list-labels-filter-link">Sort</div>
         </div>
       </li>

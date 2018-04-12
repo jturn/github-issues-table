@@ -11,9 +11,10 @@ class TableContainer extends Component {
       issueData: [],
       authors: [],
       labels: [],
+      filteredIssues: [],
       filteredAuthors: [],
       filteredLabels: [],
-      showAuthorDropdown: true,
+      showAuthorDropdown: false,
       showLabelDropdown: false,
       filterInputValue: ''
     }
@@ -32,15 +33,15 @@ class TableContainer extends Component {
       this.setState({filteredAuthors: newAuthorList})
     } else {
       let newLabelList = this.state.labels.filter((label) => {
-        return label.indexOf(query) > -1
+        return label.label.indexOf(query) > -1
       })
       this.setState({filteredLabels: newLabelList})
     }
-
     this.setState({ filterInputValue: query })
   }
 
   handleFilterClick(filter) {
+    console.log('filter click clicked', filter);
     if (filter === 'author') {
       this.setState({
         showAuthorDropdown: !this.state.showAuthorDropdown,
@@ -55,8 +56,22 @@ class TableContainer extends Component {
     }
   }
 
-  filterIssues(author) {
-    console.log('author', author);
+  filterIssues(type, filterBy) {
+    let newList;
+
+    if (type === 'author') {
+      newList = this.state.issueData.filter((issue) => {
+        return issue.user.login === filterBy
+      })
+    }
+    if (type === 'label') {
+      newList = this.state.issueData.filter((issue) => {
+        return issue.labels.some((label) => {
+          return label.name === filterBy;
+        })
+      })
+    }
+    this.setState({filteredIssues: newList});
   }
 
   componentDidMount() {
@@ -92,6 +107,7 @@ class TableContainer extends Component {
           issueData: res.data,
           authors: [...authorList],
           labels: [...labelList],
+          filteredIssues: res.data,
           filteredAuthors: [...authorList],
           filteredLabels: [...labelList]
         })
@@ -105,13 +121,14 @@ class TableContainer extends Component {
     return (
       <div className="table-container">
         <IssueTable 
-          issues={this.state.issueData}
+          issues={this.state.filteredIssues}
           authors={this.state.filteredAuthors} 
           labels={this.state.filteredLabels} 
           handleFilterClick={this.handleFilterClick}
           handleFilterInput={this.handleFilterInput}
-          showAuthorDropdown={this.state.showAuthorDropdown}
           filterIssues={this.filterIssues}
+          showAuthorDropdown={this.state.showAuthorDropdown}
+          showLabelDropdown={this.state.showLabelDropdown}
         />
       </div>
     );

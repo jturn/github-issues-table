@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import IssueListItem from './IssueListItem';
 import IssueListHeader from './IssueListHeader';
 import humanizeDate from './utils';
-import FilterDropdown from './FilterDropdown';
 
 class IssueTable extends Component {
   render() {
-    console.log('props.authors', this.props.authors);
-  console.log('props.labels', this.props.labels);
+    console.log('labels', this.props.labels); 
     return (
       <div>
         <ul className="issue-list">
@@ -16,34 +14,24 @@ class IssueTable extends Component {
           labels={this.props.labels} 
           openIssues={this.props.issues.length}
           handleClick={this.props.handleFilterClick}
+          handleFilterInput={this.props.handleFilterInput}
+          filterIssues={this.props.filterIssues}
+          showAuthorDropdown={this.props.showAuthorDropdown}
+          showLabelDropdown={this.props.showLabelDropdown}
         />
-        {this.props.showAuthorDropdown && 
-          <FilterDropdown 
-            names={this.props.authors} 
-            type="author" 
-            handleFilterInput={this.props.handleFilterInput}
-            filterIssues={this.props.filterIssues}
-          />}
-        {this.props.showLabelDropdown && 
-          <FilterDropdown 
-            names={this.props.labels} 
-            type="author" 
-            handleFilterInput={this.props.handleFilterInput}
-            filterIssues={this.props.filterIssues}
-          />}
-          {this.props.issues.map((issue) => {
-            return <IssueListItem
-                      number={issue.number}
-                      reporter={issue.user.login}
-                      date={humanizeDate(issue.created_at)}
-                      name={issue.title}
-                      status={issue.state}
-                      assignee={issue.assignee}
-                      labels={issue.labels}
-                      comments={issue.comments}
-                      issueUrl={issue.html_url}
-                  />
-          })}
+        {this.props.issues.map((issue) => {
+          return <IssueListItem
+                    number={issue.number}
+                    reporter={issue.user.login}
+                    date={humanizeDate(issue.created_at)}
+                    name={issue.title}
+                    status={issue.state}
+                    assignee={issue.assignee}
+                    labels={issue.labels}
+                    comments={issue.comments}
+                    issueUrl={issue.html_url}
+                />
+        })}
         </ul>
       </div>
     );
